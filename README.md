@@ -32,6 +32,26 @@ php artisan key:generate
 php artisan migrate
 ```
 
+7. シーディングの実行
+``` bash
+php artisan db:seed
+```
+
+**ログイン情報**
+* 一般ユーザー
+``` text
+name: ???
+email: ???
+password: ??? 
+```
+
+* 管理者ユーザー
+``` text
+name: ???
+email: ???
+password: ??? 
+```
+
 ## 使用技術(実行環境)
 * php 7.4.9-fpm
 * Laravel 8.83.29
