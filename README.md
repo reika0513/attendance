@@ -37,7 +37,7 @@ php artisan migrate
 php artisan db:seed
 ```
 
-**ログイン情報**
+## ログイン情報
 * 一般ユーザー
 ``` text
 name: ???
