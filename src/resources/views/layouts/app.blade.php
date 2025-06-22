@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>CoachTech Free-market</title>
+    <title>CoachTech 勤怠管理アプリ</title>
     <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
     @yield('css')
@@ -21,10 +21,9 @@
                 <a class="button_application" href="/stamp_correction_request/list">申請</a>
                 <form class="logout_form" action="/logout" method="post">
                 @csrf
-                    <button class="button_logout">ログアウト</button>
+                    <button class="button_application">ログアウト</button>
                 </form>
             </div>
-            
         </div>
     </header>
     

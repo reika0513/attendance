@@ -12,9 +12,18 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <a class="header__logo" href="/login">
+            <a class="header__logo" href="/attendance">
                 COACHTECH
             </a>
+            <div class="header_button">
+                <a class="button_stamp" href="/admin/attendance/list">勤怠一覧</a>
+                <a class="button_list" href="/admin/staff/list">スタッフ一覧</a>
+                <a class="button_application" href="/stamp_correction_request/list">申請一覧</a>
+                <form class="logout_form" action="/logout" method="post">
+                @csrf
+                    <button class="button_application">ログアウト</button>
+                </form>
+            </div>
         </div>
     </header>
     
