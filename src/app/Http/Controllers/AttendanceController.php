@@ -7,6 +7,6 @@ use Illuminate\Http\Request;
 class AttendanceController extends Controller
 {
     public function stamp(){
-        return view('auth.register');
+        return view('stamp');
     }
 }
