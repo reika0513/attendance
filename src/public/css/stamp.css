@@ -1,0 +1,43 @@
+.stamp{
+    height: 800px;
+    padding: 170px 0px;
+    background-color: rgb(251, 248, 243);
+}
+
+.status_icon{
+    text-align: center;
+    margin: 20px auto;
+    padding-top: 8px;
+    width: 100px;
+    height: 40px;
+    border-radius: 50px;
+    background-color: #C8C8C8;
+}
+
+.clock_date{
+    font-size: 40px;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.clock_time{
+    font-size: 80px;
+    font-weight: bold;
+    margin: 0px auto;
+    text-align: center;
+}
+
+.stamp_button{
+    margin: 70px;
+}
+
+.stamp_button-attendance, .stamp_button-break,
+.stamp_button-break-back, .stamp_button-leaving{
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    width: 221px;
+    height: 77px;
+    background-color: #FFFFFF;
+}
