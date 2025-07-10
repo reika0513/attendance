@@ -15,6 +15,7 @@
             <a class="header__logo" href="/attendance">
                 COACHTECH
             </a>
+            @if (Auth::check())
             <div class="header_button">
                 <a class="button_stamp" href="/attendance">勤怠</a>
                 <a class="button_list" href="/attendance/list">勤怠一覧</a>
@@ -24,6 +25,7 @@
                     <button class="button_application">ログアウト</button>
                 </form>
             </div>
+            @endif
         </div>
     </header>
     

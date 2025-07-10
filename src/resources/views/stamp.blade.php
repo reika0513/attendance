@@ -40,7 +40,7 @@
         var day = nowDate.getDate();
         var week_ja= new Array("日","月","火","水","木","金","土");
         var week_ja=week_ja[week];
-        var msg = Year + "年" + month + "月" + day + "日" + week_ja +"曜日";
+        var msg = Year + "年" + month + "月" + day + "日(" + week_ja +")";
         document.getElementById("clock-date").innerHTML = msg;
     }
     setInterval('showDate()',1000);
