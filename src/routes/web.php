@@ -15,5 +15,8 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth')->group(function () {
-Route::get('/attendance', [AttendanceController::class, 'stamp']);
+    Route::get('/attendance', [AttendanceController::class, 'stamp']);
+
+    Route::post('/punch_in', 'App\Http\Controllers\AttendanceController@punchIn')->name('timestamp/punch_in');
+    Route::post('/punch_out', 'App\Http\Controllers\AttendanceController@punchOut')->name('timestamp/punch_out');
 });

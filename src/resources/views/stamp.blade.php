@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="stamp">
-    <div class="stamp_form"><!-- or formタグ -->
+    <div class="stamp_form">
         <div class="status">
             <p class="status_icon">出勤</p>
         </div>
@@ -16,21 +16,33 @@
         </div>
         <div class="stamp_button">
             <!-- if関数?　それぞれ表示を変える -->
-            <button class="stamp_button-attendance">出勤</button>
+            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            @csrf
+            @method('POST')
+                <button type="submit" class="stamp_button-attendance">出勤</button>
+            </form>
+
             <button class="stamp_button-break">休憩入</button>
             <button class="stamp_button-break-back">休憩戻</button>
-            <button class="stamp_button-leaving">退勤</button>
+
+            <form action="{{ route('timestamp/punch_out') }}" method="POST">
+            @csrf
+            @method('POST')
+                <button type="submit" class="stamp_button-leaving">退勤</button>
+            </form>
         </div>
+        @if (session('error'))
+        <!-- 打刻のエラーメッセージ-->
+            <div class="container mt-2">
+                <div class="alert alert-danger">
+                    {{ session('error') }}
+                </div>
+            </div>
+        @endif
     </div>
 </div>
 
 <script type="text/javascript">
-    function twoDigit(num) {
-      var ret;
-      if( num < 10 ) {ret = "0" + num; }
-      else {ret = num;} 
-      return ret;
-    }
 
     function showDate() {
         var nowDate = new Date();
@@ -47,17 +59,14 @@
 </script>
 
 <script type="text/javascript">
-    function twoDigit(num) {
-      var ret;
-      if( num < 10 ) {ret = "0" + num; }
-      else {ret = num;} 
-      return ret;
-    }
-
     function showClock() {
         var nowTime = new Date();
         var nowHour = nowTime.getHours();
         var nowMin  = nowTime.getMinutes();
+
+        if(nowHour < 10) { nowHour = "0" + nowHour; }
+        if(nowMin < 10) { nowMin = "0" + nowMin; }
+
         var msg = nowHour + ":" + nowMin;
         document.getElementById("clock-time").innerHTML = msg;
     }
