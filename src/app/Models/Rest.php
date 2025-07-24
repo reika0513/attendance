@@ -13,4 +13,9 @@ class Rest extends Model
         'rest_in',
         'rest_out',
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(Timestamp::class);
+    }
 }

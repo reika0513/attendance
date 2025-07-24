@@ -22,7 +22,7 @@ class Timestamp extends Model
 
     public function rest()
     {
-        return $this->hasOne(Rest::class);
+        return $this-hasMany(Rest::class);
     }
 
 }

@@ -22,8 +22,17 @@
                 <button type="submit" class="stamp_button-attendance">出勤</button>
             </form>
 
+            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            @csrf
+            @method('POST')
             <button class="stamp_button-break">休憩入</button>
+            </form>
+
+            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            @csrf
+            @method('POST')
             <button class="stamp_button-break-back">休憩戻</button>
+            </form>
 
             <form action="{{ route('timestamp/punch_out') }}" method="POST">
             @csrf
