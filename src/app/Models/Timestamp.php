@@ -12,17 +12,14 @@ class Timestamp extends Model
         'user_id',
         'punch_in',
         'punch_out',
+        'rest_in',
+        'rest_out'
     ];
 
 
     public function user()
     {
         return $this->belongsTo(User::class);
-    }
-
-    public function rest()
-    {
-        return $this-hasMany(Rest::class);
     }
 
 }

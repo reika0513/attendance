@@ -8,7 +8,9 @@
 <div class="stamp">
     <div class="stamp_form">
         <div class="status">
-            <p class="status_icon">出勤</p>
+            @if ( empty($timestamp->punch_in))
+            <p class="status_icon">勤務外</p>
+            @endempty
         </div>
         <div class="clock">
             <p class="clock_date" id="clock-date"></p>
@@ -22,13 +24,13 @@
                 <button type="submit" class="stamp_button-attendance">出勤</button>
             </form>
 
-            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            <form action="{{ route('timestamp/rest_in') }}" method="POST">
             @csrf
             @method('POST')
             <button class="stamp_button-break">休憩入</button>
             </form>
 
-            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            <form action="{{ route('timestamp/rest_out') }}" method="POST">
             @csrf
             @method('POST')
             <button class="stamp_button-break-back">休憩戻</button>

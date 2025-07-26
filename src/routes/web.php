@@ -19,4 +19,7 @@ Route::middleware('auth')->group(function () {
 
     Route::post('/punch_in', 'App\Http\Controllers\AttendanceController@punchIn')->name('timestamp/punch_in');
     Route::post('/punch_out', 'App\Http\Controllers\AttendanceController@punchOut')->name('timestamp/punch_out');
+
+    Route::post('/rest_in', 'App\Http\Controllers\AttendanceController@restIn')->name('timestamp/rest_in');
+    Route::post('/rest_out', 'App\Http\Controllers\AttendanceController@restOut')->name('timestamp/rest_out');
 });

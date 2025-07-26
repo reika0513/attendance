@@ -18,6 +18,8 @@ class CreateTimestampsTable extends Migration
             $table->integer('user_id')->unsigned();
             $table->datetime('punch_in');
             $table->datetime('punch_out')->nullable();
+            $table->datetime('rest_in')->nullable();
+            $table->datetime('rest_out')->nullable();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users');

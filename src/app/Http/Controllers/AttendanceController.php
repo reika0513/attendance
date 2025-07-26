@@ -53,23 +53,23 @@ class AttendanceController extends Controller
 
 
     public function restIn(){
-        $stamp = Timestamp::id();
-        $rest = Rest::where('timestamp_id', $stamp->id)->latest()->first();
+        $user = Auth::user();
+        $timestamp = Timestamp::where('user_id', $user->id)->latest()->first();
 
-        $rest = Rest::create([
-            'timestamp_id' => $stamp->id,
+        $timestamp->update([
             'rest_in' => Carbon::now()
         ]);
         return redirect()->back();
     }
 
     public function restOut(){
-        $stamp = Timestamp::id();
-        $rest = Rest::where('timestamp_id', $stamp->id)->latest()->first();
+        $user = Auth::user();
+        $timestamp = Timestamp::where('user_id', $user->id)->latest()->first();
 
         $timestamp->update([
-            'prest_out' => Carbon::now()
+            'rest_out' => Carbon::now()
         ]);
+
         return redirect()->back();
     }
 }
