@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Timestamp extends Model
 {
@@ -17,9 +18,14 @@ class Timestamp extends Model
     ];
 
 
+
     public function user()
     {
         return $this->belongsTo(User::class);
     }
+
+    public function getTodayPunchIn($userId){
+        return self::where('user_id', $userId)->whereDate('punch_in', Carbon::today())->first();
+    } 
 
 }

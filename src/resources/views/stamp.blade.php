@@ -8,20 +8,17 @@
 <div class="stamp">
     <div class="stamp_form">
         <div class="status">
-            @if ( empty($timestamp->punch_in))
-            <p class="status_icon">勤務外</p>
-            @endempty
+            <p class="status_icon" id="status">{{$status}}</p>
         </div>
         <div class="clock">
             <p class="clock_date" id="clock-date"></p>
             <p class="clock_time" id="clock-time"></p>
         </div>
         <div class="stamp_button">
-            <!-- if関数?　それぞれ表示を変える -->
             <form action="{{ route('timestamp/punch_in') }}" method="POST">
             @csrf
             @method('POST')
-                <button type="submit" class="stamp_button-attendance">出勤</button>
+                <button type="submit" class="stamp_button-attendance" name="punch_in">出勤</button>
             </form>
 
             <form action="{{ route('timestamp/rest_in') }}" method="POST">
@@ -82,5 +79,12 @@
         document.getElementById("clock-time").innerHTML = msg;
     }
     setInterval('showClock()',1000);
+</script>
+
+<script type="text/javascript">
+    if($oldTimestamp == $newTimestampDay){
+        console.log('出勤中');
+    }
+    document.getElementById("status").innerHTML = msg;
 </script>
 @endsection

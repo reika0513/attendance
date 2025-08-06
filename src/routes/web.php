@@ -16,10 +16,11 @@ use Illuminate\Support\Facades\Route;
 
 Route::middleware('auth')->group(function () {
     Route::get('/attendance', [AttendanceController::class, 'stamp']);
-
     Route::post('/punch_in', 'App\Http\Controllers\AttendanceController@punchIn')->name('timestamp/punch_in');
     Route::post('/punch_out', 'App\Http\Controllers\AttendanceController@punchOut')->name('timestamp/punch_out');
-
     Route::post('/rest_in', 'App\Http\Controllers\AttendanceController@restIn')->name('timestamp/rest_in');
     Route::post('/rest_out', 'App\Http\Controllers\AttendanceController@restOut')->name('timestamp/rest_out');
+
+    Route::get('/attendance/list', [AttendanceController::class, 'list']);
+    Route::get('/stamp_correction_request/list', [AttendanceController::class, 'application']);
 });

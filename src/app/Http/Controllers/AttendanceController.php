@@ -11,7 +11,17 @@ use Carbon\Carbon;
 class AttendanceController extends Controller
 {
     public function stamp(){
-        return view('stamp');
+        $user = Auth::user();
+        $status="";
+        $timestamps=new Timestamp();
+        $today_punch_in=$timestamps->getTodayPunchIn($user->id);
+        if($today_punch_in!=null){
+            $status="勤務中";
+        }else{
+            $status="勤務外";
+        }
+        return view('stamp')->with('status', $status);
+    
     }
 
     public function punchIn()
@@ -71,5 +81,14 @@ class AttendanceController extends Controller
         ]);
 
         return redirect()->back();
+    }
+
+
+    public function list(){
+        return view('list');
+    }
+
+    public function application(){
+        return view('application');
     }
 }

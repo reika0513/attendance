@@ -5,6 +5,6 @@
 @endsection
 
 @section('content')
-
+<h1>申請一覧</h1>
 
 @endsection
