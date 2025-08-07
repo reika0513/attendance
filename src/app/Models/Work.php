@@ -4,11 +4,13 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Work extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'id',
         'user_id',
         'punch_in',
         'punch_out'
@@ -19,8 +21,16 @@ class Work extends Model
         return $this->belongsTo(User::class);
     }
 
-    public function timestamp()
+    public function rest()
     {
         return $this->hasMany(Rest::class);
     }
+
+    public function getTodayPunchIn($userId){
+        return self::where('user_id', $userId)->whereDate('punch_in', Carbon::today())->first();
+    } 
+
+    public function getTodayPunchOut($userId){
+        return self::where('user_id', $userId)->whereDate('punch_out', Carbon::today())->first();
+    } 
 }

@@ -9,13 +9,16 @@ class Rest extends Model
 {
     use HasFactory;
     protected $fillable=[
+        'id',
         'work_id',
         'rest_in',
         'rest_out'
     ];
 
-    public function user()
+    public function work()
     {
         return $this->belongsTo(Work::class);
     }
+
+    
 }
