@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTimestampsTable extends Migration
+class CreateRestsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,14 @@ class CreateTimestampsTable extends Migration
      */
     public function up()
     {
-        Schema::create('timestamps', function (Blueprint $table) {
+        Schema::create('rests', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('user_id')->unsigned();
-            $table->datetime('punch_in');
-            $table->datetime('punch_out')->nullable();
-            $table->datetime('rest_in')->nullable();
+            $table->integer('work_id')->unsigned();
+            $table->datetime('rest_in');
             $table->datetime('rest_out')->nullable();
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('work_id')->references('id')->on('works');
         });
     }
 
@@ -33,6 +31,6 @@ class CreateTimestampsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('timestamps');
+        Schema::dropIfExists('rests');
     }
 }

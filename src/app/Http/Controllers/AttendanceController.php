@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Models\Timestamp;
+use App\Models\Work;
+use App\Models\Rest;
 use Auth;
 use Carbon\Carbon;
 
@@ -13,7 +14,7 @@ class AttendanceController extends Controller
     public function stamp(){
         $user = Auth::user();
         $status="";
-        $timestamps=new Timestamp();
+        $timestamps=new Work();
         $today_punch_in=$timestamps->getTodayPunchIn($user->id);
         if($today_punch_in!=null){
             $status="勤務中";
@@ -27,7 +28,7 @@ class AttendanceController extends Controller
     public function punchIn()
     {
         $user = Auth::user();
-        $oldTimestamp = Timestamp::where('user_id', $user->id)->latest()->first();
+        $oldTimestamp = Work::where('user_id', $user->id)->latest()->first();
 
         if ($oldTimestamp) {
             $oldTimestampPunchIn = new Carbon($oldTimestamp->punch_in);
@@ -40,7 +41,7 @@ class AttendanceController extends Controller
             return redirect()->back()->with('error', 'すでに出勤打刻がされています');
         } 
 
-        $timestamp = Timestamp::create([
+        $timestamp = Work::create([
             'user_id' => $user->id,
             'punch_in' => Carbon::now()
         ]);
@@ -49,7 +50,7 @@ class AttendanceController extends Controller
 
     public function punchOut(){
         $user = Auth::user();
-        $timestamp = Timestamp::where('user_id', $user->id)->latest()->first();
+        $timestamp = Work::where('user_id', $user->id)->latest()->first();
 
         if( !empty($timestamp->punch_out)) {
             return redirect()->back()->with('error', '既に退勤の打刻がされているか、出勤打刻されていません');
@@ -64,7 +65,7 @@ class AttendanceController extends Controller
 
     public function restIn(){
         $user = Auth::user();
-        $timestamp = Timestamp::where('user_id', $user->id)->latest()->first();
+        $timestamp = Rest::where('user_id', $user->id)->latest()->first();
 
         $timestamp->update([
             'rest_in' => Carbon::now()
@@ -74,7 +75,7 @@ class AttendanceController extends Controller
 
     public function restOut(){
         $user = Auth::user();
-        $timestamp = Timestamp::where('user_id', $user->id)->latest()->first();
+        $timestamp = Rest::where('user_id', $user->id)->latest()->first();
 
         $timestamp->update([
             'rest_out' => Carbon::now()
