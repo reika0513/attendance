@@ -63,15 +63,15 @@ class AttendanceController extends Controller
             'punch_out' => Carbon::now()
         ]);
 
-        return redirect()->back();
+        return redirect()->back()->with('error', 'お疲れ様でした。');
     }
 
 
     public function restIn(){
-        $work= Work::where('id',1)->latest()->get();
-        $timestamp = Rest::where('work_id', $work->id)->latest()->first();
+        $work= Work::where('id')->latest()->first();
+        $rest = Rest::where('work_id', $work->id)->latest()->first();
 
-        $timestamp = Rest::create([
+        $rest = Rest::create([
             'work_id' => $work->id,
             'rest_in' => Carbon::now()
         ]);
@@ -80,9 +80,9 @@ class AttendanceController extends Controller
 
     public function restOut(){
         $work= Work::where('id')->get();
-        $timestamp = Rest::where('work_id', $work->id)->latest()->first();
+        $rest = Rest::where('work_id', $work->id)->latest()->first();
 
-        $timestamp->update([
+        $rest->update([
             'rest_out' => Carbon::now()
         ]);
 

@@ -1,0 +1,48 @@
+.list{
+    max-width: 1540px;
+    height: 2000px;
+}
+
+.title {
+    margin: 80px 0px 40px 250px;
+    border-left: solid 8px #000000;
+    padding-left: 25px;
+    font-size: 30px;
+}
+
+.list_month{
+    width: 900px;
+    margin: 40px 0px 20px 250px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.last_month, .next_month{
+    margin: 0px;
+    font-weight: bold;
+    font-size: 16px;
+    color: #737373;
+}
+
+.month{
+    margin: 0px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.list_day{
+    width: 900px;
+    margin: 20px 0px 20px 250px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.table_title, .table_content{
+    color: #737373;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: solid 3px #E1E1E1;
+}
