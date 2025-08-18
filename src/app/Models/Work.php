@@ -33,4 +33,9 @@ class Work extends Model
     public function getTodayPunchOut($userId){
         return self::where('user_id', $userId)->whereDate('punch_out', Carbon::today())->first();
     } 
+
+    public function getWorkingData($userId){
+        return self::where('user_id', $userId)->whereNull('punch_out')->first();
+    }
+    
 }

@@ -68,11 +68,12 @@ class AttendanceController extends Controller
 
 
     public function restIn(){
-        $work= Work::where('id')->latest()->first();
-        $rest = Rest::where('work_id', $work->id)->latest()->first();
+        $work= new Work();
+        $user = Auth::user();
+        $work_data = $work->getWorkingData($user->id);
 
         $rest = Rest::create([
-            'work_id' => $work->id,
+            'work_id' => $work_data->id,
             'rest_in' => Carbon::now()
         ]);
         return redirect()->back();

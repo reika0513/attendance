@@ -40,9 +40,19 @@
     border-radius: 10px;
 }
 
-.table_title, .table_content{
+.table_title{
+    height: 30px;
     color: #737373;
     font-weight: bold;
     font-size: 16px;
     border-bottom: solid 3px #E1E1E1;
+}
+
+.table_content{
+    padding: 10px 53px;
+}
+
+.table_content-detail{
+    text-decoration: none;
+    color: #000000;
 }

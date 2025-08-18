@@ -16,21 +16,21 @@
     <div class="list_day">
         <table class="list_day-table">
             <tr class="table_title">
-                <th>日付</th>
-                <th>出勤</th>
-                <th>退勤</th>
-                <th>休憩</th>
-                <th>合計</th>
-                <th>詳細</th>
+                <th class="table_content">日付</th>
+                <th class="table_content">出勤</th>
+                <th class="table_content">退勤</th>
+                <th class="table_content">休憩</th>
+                <th class="table_content">合計</th>
+                <th class="table_content">詳細</th>
             </tr>
-            <tr class="table_content">
-                <th>06/01(木)</th>
-                <td>09:00</td>
-                <td>18:00</td>
-                <td>1:00</td>
-                <td>8:00</td>
-                <td>
-                    <a href="">詳細</a>
+            <tr class="table_title">
+                <th class="table_content">06/01(木)</th>
+                <td class="table_content">09:00</td>
+                <td class="table_content">18:00</td>
+                <td class="table_content">1:00</td>
+                <td class="table_content">8:00</td>
+                <td class="table_content">
+                    <a href="" class="table_content-detail">詳細</a>
                 </td>
             </tr>
         </table>
