@@ -15,6 +15,7 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $status="";
         $works=new Work();
+        $rests=new Rest();
         $today_punch_in=$works->getTodayPunchIn($user->id);
         if($today_punch_in==null){
             $status="勤務外";
@@ -24,6 +25,10 @@ class AttendanceController extends Controller
         $today_punch_out=$works->getTodayPunchOut($user->id);
         if($today_punch_out!=null){
             $status="退勤済";
+        }
+        $today_rest_in=$rests->getTodayRestIn($user->id);
+        if($today_rest_in!=null){
+            $status="休憩中";
         }
         return view('stamp')->with('status', $status);
     
@@ -80,8 +85,10 @@ class AttendanceController extends Controller
     }
 
     public function restOut(){
-        $work= Work::where('id')->get();
-        $rest = Rest::where('work_id', $work->id)->latest()->first();
+        $work= new Work();
+        $user = Auth::user();
+        $work_data = $work->getWorkingData($user->id);
+        $rest = Rest::where('work_id', $work_data->id)->latest()->first();
 
         $rest->update([
             'rest_out' => Carbon::now()
