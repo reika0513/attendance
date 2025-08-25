@@ -47,7 +47,7 @@ class AttendanceController extends Controller
         $newTimestampDay = Carbon::today();
 
         if (($oldTimestamp == $newTimestampDay) && (empty($oldTimestamp->punch_out))){
-            return redirect()->back()->with('error', 'すでに出勤打刻がされています');
+            return redirect()->back()->with('message', 'すでに出勤打刻がされています');
         } 
 
         $timestamp = Work::create([
@@ -61,14 +61,11 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $timestamp = Work::where('user_id', $user->id)->latest()->first();
 
-        if( !empty($timestamp->punch_out)) {
-            return redirect()->back()->with('error', '既に退勤の打刻がされているか、出勤打刻されていません');
-        }
         $timestamp->update([
             'punch_out' => Carbon::now()
         ]);
 
-        return redirect()->back()->with('error', 'お疲れ様でした。');
+        return redirect()->back()->with('message', 'お疲れ様でした。');
     }
 
 

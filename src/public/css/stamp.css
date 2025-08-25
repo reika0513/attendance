@@ -66,3 +66,8 @@
 .stamp_button-break, .stamp_button-leaving{
     margin: 35px;
 }
+
+.message_content{
+    padding-top: 50px;
+    text-align: center;
+}

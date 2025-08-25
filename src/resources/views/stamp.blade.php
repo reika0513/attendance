@@ -48,11 +48,11 @@
             </form>
             @endif
         </div>
-        @if (session('error'))
-        <!-- 打刻のエラーメッセージ-->
-            <div class="container mt-2">
-                <div class="alert alert-danger">
-                    {{ session('error') }}
+
+        @if (session('message'))
+            <div class="message">
+                <div class="message_content">
+                    {{ session('message') }}
                 </div>
             </div>
         @endif
