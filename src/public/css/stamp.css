@@ -28,11 +28,21 @@
 }
 
 .stamp_button{
-    margin: 70px;
+    margin: 70px 0px;
 }
 
-.stamp_button-attendance, .stamp_button-break,
-.stamp_button-break-back, .stamp_button-leaving{
+.stamp_button-first{
+    display: flex;
+    margin: 0px auto;
+    width: 580px;
+}
+
+.stamp_button-second, .stamp_button-third{
+    margin: 0px auto;
+    width: 200px;
+}
+
+ .stamp_button-break, .stamp_button-break-back{
     font-size: 32px;
     font-weight: bold;
     border: none;
@@ -40,4 +50,19 @@
     width: 221px;
     height: 77px;
     background-color: #FFFFFF;
+}
+
+.stamp_button-attendance, .stamp_button-leaving{
+    font-size: 32px;
+    font-weight: bold;
+    border: none;
+    border-radius: 20px;
+    width: 221px;
+    height: 77px;
+    color: #FFFFFF;
+    background-color: #000000;
+}
+
+.stamp_button-break, .stamp_button-leaving{
+    margin: 35px;
 }

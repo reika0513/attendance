@@ -99,7 +99,9 @@ class AttendanceController extends Controller
 
 
     public function list(){
-        return view('list');
+        $user = Auth::user();
+        $works = Work::where('user_id', $user->id)->get();
+        return view('list', compact('works'));
     }
 
     public function application(){

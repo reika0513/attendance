@@ -23,16 +23,22 @@
                 <th class="table_content">合計</th>
                 <th class="table_content">詳細</th>
             </tr>
+            
             <tr class="table_title">
                 <th class="table_content">06/01(木)</th>
-                <td class="table_content">09:00</td>
-                <td class="table_content">18:00</td>
+                @foreach
+                <td class="table_content">{{$works->punch_in}}</td>
+                @endforeach
+                @foreach
+                <td class="table_content">{{$works->punch_out}}</td>
+                @endforeach
                 <td class="table_content">1:00</td>
                 <td class="table_content">8:00</td>
                 <td class="table_content">
                     <a href="" class="table_content-detail">詳細</a>
                 </td>
             </tr>
+            
         </table>
     </div>
 </div>

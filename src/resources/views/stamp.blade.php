@@ -15,22 +15,12 @@
             <p class="clock_time" id="clock-time"></p>
         </div>
         <div class="stamp_button">
-            <form action="{{ route('timestamp/punch_in') }}" method="POST">
-            @csrf
-            @method('POST')
-                <button type="submit" class="stamp_button-attendance" name="punch_in">出勤</button>
-            </form>
-
+            @if ($status=='出勤中')
+            <div class="stamp_button-first">
             <form action="{{ route('timestamp/rest_in') }}" method="POST">
             @csrf
             @method('POST')
             <button type="submit" class="stamp_button-break">休憩入</button>
-            </form>
-
-            <form action="{{ route('timestamp/rest_out') }}" method="POST">
-            @csrf
-            @method('POST')
-            <button type="submit" class="stamp_button-break-back">休憩戻</button>
             </form>
 
             <form action="{{ route('timestamp/punch_out') }}" method="POST">
@@ -38,6 +28,25 @@
             @method('POST')
                 <button type="submit" class="stamp_button-leaving">退勤</button>
             </form>
+            </div>
+
+            @elseif ($status=='休憩中' && $status=='出勤中')
+            <div class="stamp_button-second">
+            <form action="{{ route('timestamp/rest_out') }}" method="POST">
+            @csrf
+            @method('POST')
+            <button type="submit" class="stamp_button-break-back">休憩戻</button>
+            </form>
+            </div>
+
+            @else
+            <div class="stamp_button-third">
+            <form action="{{ route('timestamp/punch_in') }}" method="POST">
+            @csrf
+            @method('POST')
+                <button type="submit" class="stamp_button-attendance" name="punch_in">出勤</button>
+            </form>
+            @endif
         </div>
         @if (session('error'))
         <!-- 打刻のエラーメッセージ-->
