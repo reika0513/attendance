@@ -25,13 +25,11 @@
             </tr>
             
             <tr class="table_title">
-                <th class="table_content">06/01(木)</th>
                 @foreach
-                <td class="table_content">{{$works->punch_in}}</td>
+                <th class="table_content">{{$date}}</th>
                 @endforeach
-                @foreach
-                <td class="table_content">{{$works->punch_out}}</td>
-                @endforeach
+                <td class="table_content"></td>
+                <td class="table_content"></td>
                 <td class="table_content">1:00</td>
                 <td class="table_content">8:00</td>
                 <td class="table_content">

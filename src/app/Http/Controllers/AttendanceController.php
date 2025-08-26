@@ -8,6 +8,7 @@ use App\Models\Work;
 use App\Models\Rest;
 use Auth;
 use Carbon\Carbon;
+use Carbon\CarbonPeriod;
 
 class AttendanceController extends Controller
 {
@@ -26,8 +27,9 @@ class AttendanceController extends Controller
         if($today_punch_out!=null){
             $status="退勤済";
         }
-        $today_rest_in=$rests->getTodayRestIn($user->id);
-        if($today_rest_in!=null){
+        $today_rest_in=$rests->getTodayRestIn($rests->id);
+        $today_rest_out=$rests->getTodayRestOut($rests->id);
+        if($today_rest_in!=null && $today_rest_out==null){
             $status="休憩中";
         }
         return view('stamp')->with('status', $status);
@@ -96,9 +98,8 @@ class AttendanceController extends Controller
 
 
     public function list(){
-        $user = Auth::user();
-        $works = Work::where('user_id', $user->id)->get();
-        return view('list', compact('works'));
+        $date = CarbonPeriod::create('2025-01-01', '2025-12-31')->toArray();
+        return view('list');
     }
 
     public function application(){

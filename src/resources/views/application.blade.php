@@ -5,6 +5,15 @@
 @endsection
 
 @section('content')
-<h1>申請一覧</h1>
+<div class="application">
+<h1 class="title">申請一覧</h1>
+
+<div class="application_content">
+    <div class="content_header">
+        <p class="header-wait">承認待ち</p>
+        <p class="header-finish">承認済み</p>
+    </div>
+</div>
+</div>
 
 @endsection

@@ -25,5 +25,9 @@ class Rest extends Model
         return self::where('work_id', $workId)->whereDate('rest_in', Carbon::today())->first();
     }
 
+    public function getTodayRestOut($workId){
+        return self::where('work_id', $workId)->whereDate('rest_out', Carbon::today())->first();
+    }
+
     
 }
