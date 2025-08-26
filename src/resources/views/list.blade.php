@@ -28,8 +28,10 @@
                 @foreach
                 <th class="table_content">{{$date}}</th>
                 @endforeach
-                <td class="table_content"></td>
-                <td class="table_content"></td>
+                @foreach
+                <td class="table_content">{{$works->punch_in}}</td>
+                <td class="table_content">{{$works->punch_out}}</td>
+                @endforeach
                 <td class="table_content">1:00</td>
                 <td class="table_content">8:00</td>
                 <td class="table_content">

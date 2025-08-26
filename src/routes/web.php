@@ -22,5 +22,6 @@ Route::middleware('auth')->group(function () {
     Route::post('/rest_out', 'App\Http\Controllers\AttendanceController@restOut')->name('timestamp/rest_out');
 
     Route::get('/attendance/list', [AttendanceController::class, 'list']);
-    Route::get('/stamp_correction_request/list', [AttendanceController::class, 'application']);
+    Route::get('/stamp_correction_request/list_wait', [AttendanceController::class, 'applicationWait']);
+    Route::get('/stamp_correction_request/list_finish', [AttendanceController::class, 'applicationFinish']);
 });

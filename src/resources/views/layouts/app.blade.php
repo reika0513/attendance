@@ -19,7 +19,7 @@
             <div class="header_button">
                 <a class="button_stamp" href="/attendance">勤怠</a>
                 <a class="button_list" href="/attendance/list">勤怠一覧</a>
-                <a class="button_application" href="/stamp_correction_request/list">申請</a>
+                <a class="button_application" href="/stamp_correction_request/list_wait">申請</a>
                 <form class="logout_form" action="/logout" method="post">
                 @csrf
                     <button class="button_application">ログアウト</button>

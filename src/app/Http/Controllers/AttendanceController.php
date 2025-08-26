@@ -99,10 +99,17 @@ class AttendanceController extends Controller
 
     public function list(){
         $date = CarbonPeriod::create('2025-01-01', '2025-12-31')->toArray();
-        return view('list');
+
+        $user = Auth::user();
+        $works = Work::where('user_id', $user->id)->get();
+        return view('list', compact('works'));
     }
 
-    public function application(){
-        return view('application');
+    public function applicationWait(){
+        return view('application_wait');
+    }
+
+    public function applicationFinish(){
+        return view('application_finish');
     }
 }

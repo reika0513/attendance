@@ -1,0 +1,54 @@
+.application {
+    max-width: 1540px;
+    height: 2000px;
+}
+
+.title {
+    margin: 80px 0px 40px 320px;
+    border-left: solid 8px #000000;
+    padding-left: 25px;
+    font-size: 30px;
+}
+
+.content_header {
+    display: flex;
+    width: 900px;
+    border-bottom: solid 1px #000000;
+    margin: 0px auto;
+}
+
+.header-finish {
+    font-weight: bold;
+}
+
+.header-wait,
+.header-finish {
+    text-decoration: none;
+    font-size: 16px;
+    padding: 15px 55px;
+    color: #000000;
+}
+
+.application_wait {
+    width: 900px;
+    margin: 50px auto;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.table_title {
+    height: 30px;
+    color: #737373;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: solid 3px #E1E1E1;
+}
+
+.table_content {
+    padding: 10px 40px;
+}
+
+.table_content-detail {
+    text-decoration: none;
+    color: #000000;
+}
