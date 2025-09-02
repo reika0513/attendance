@@ -40,7 +40,7 @@
     border-radius: 10px;
 }
 
-.table_title{
+.table_title, .table_content{
     height: 30px;
     color: #737373;
     font-weight: bold;
@@ -48,11 +48,16 @@
     border-bottom: solid 3px #E1E1E1;
 }
 
-.table_content{
-    padding: 10px 53px;
+.table_content-detail, .table_title-detail{
+    padding: 10px 35px;
+    text-align: center;
 }
 
-.table_content-detail{
+.table_content_detail-link{
     text-decoration: none;
     color: #000000;
+}
+
+.y{
+    display: flex;
 }

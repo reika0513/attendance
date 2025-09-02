@@ -16,29 +16,33 @@
     <div class="list_day">
         <table class="list_day-table">
             <tr class="table_title">
-                <th class="table_content">日付</th>
-                <th class="table_content">出勤</th>
-                <th class="table_content">退勤</th>
-                <th class="table_content">休憩</th>
-                <th class="table_content">合計</th>
-                <th class="table_content">詳細</th>
+                <th class="table_title-detail">日付</th>
+                <th class="table_title-detail">出勤</th>
+                <th class="table_title-detail">退勤</th>
+                <th class="table_title-detail">休憩</th>
+                <th class="table_title-detail">合計</th>
+                <th class="table_title-detail">詳細</th>
             </tr>
-            
-            <tr class="table_title">
-                @foreach
-                <th class="table_content">{{$date}}</th>
+
+                @foreach ($works as $work)
+                <tr class="table_content">
+                <td class="table_content-detail">{{$dates}}</td>
+                <td class="table_content-detail">{{$work->punch_in}}</td>
+                <td class="table_content-detail">{{$work->punch_out}}</td>
+                </tr>
                 @endforeach
-                @foreach
-                <td class="table_content">{{$works->punch_in}}</td>
-                <td class="table_content">{{$works->punch_out}}</td>
+                @foreach ($rests as $rest)
+                <tr class="table_content">
+                <td class="table_content-detail">{{$rest->rest_in}}</td>
+                </tr>
                 @endforeach
-                <td class="table_content">1:00</td>
-                <td class="table_content">8:00</td>
-                <td class="table_content">
-                    <a href="" class="table_content-detail">詳細</a>
+                <tr class="table_content">
+                <td class="table_content-detail">8:00</td>
+                <td class="table_content-detail">
+                    <a href="" class="table_content_detail-link">詳細</a>
                 </td>
-            </tr>
-            
+                </tr>                
+                
         </table>
     </div>
 </div>

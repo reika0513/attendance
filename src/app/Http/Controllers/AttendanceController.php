@@ -98,11 +98,16 @@ class AttendanceController extends Controller
 
 
     public function list(){
-        $date = CarbonPeriod::create('2025-01-01', '2025-12-31')->toArray();
+        $date = Carbon::today();
+        $dates = $date->format('m/d');
 
         $user = Auth::user();
         $works = Work::where('user_id', $user->id)->get();
-        return view('list', compact('works'));
+
+        $work= new Work();
+        $work_data = $work->getWorkingData($user->id);
+        $rests = Rest::where('work_id', $work_data->id)->get();
+        return view('list', compact('dates','works','rests'));
     }
 
     public function applicationWait(){
