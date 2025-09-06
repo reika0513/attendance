@@ -26,7 +26,7 @@
             </tr>
             
             <tr class="table_title">
-                <th class="table_content">承認待ち</th>
+                <th class="table_content">承認済み</th>
                 <td class="table_content">山田太郎</td>
                 <td class="table_content">2025/10/25</td>
                 <td class="table_content">遅刻のため</td>

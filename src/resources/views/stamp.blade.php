@@ -30,7 +30,7 @@
             </form>
             </div>
 
-            @elseif ($status=='休憩中' && $status=='出勤中')
+            @elseif ($status=='休憩中')
             <div class="stamp_button-second">
             <form action="{{ route('timestamp/rest_out') }}" method="POST">
             @csrf

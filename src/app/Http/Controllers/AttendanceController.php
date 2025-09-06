@@ -27,8 +27,8 @@ class AttendanceController extends Controller
         if($today_punch_out!=null){
             $status="退勤済";
         }
-        $today_rest_in=$rests->getTodayRestIn($rests->id);
-        $today_rest_out=$rests->getTodayRestOut($rests->id);
+        $today_rest_in=$rests->getTodayRestIn($works->id);
+        $today_rest_out=$rests->getTodayRestOut($works->id);
         if($today_rest_in!=null && $today_rest_out==null){
             $status="休憩中";
         }
@@ -106,7 +106,12 @@ class AttendanceController extends Controller
 
         $work= new Work();
         $work_data = $work->getWorkingData($user->id);
-        $rests = Rest::where('work_id', $work_data->id)->get();
+        $rest = new Rest();
+        $rest_time = $rest->getTotalRestTime(53);
+
+        dd($rest_time);
+
+
         return view('list', compact('dates','works','rests'));
     }
 

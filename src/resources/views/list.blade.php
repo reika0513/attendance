@@ -23,10 +23,9 @@
                 <th class="table_title-detail">合計</th>
                 <th class="table_title-detail">詳細</th>
             </tr>
-
                 @foreach ($works as $work)
                 <tr class="table_content">
-                <td class="table_content-detail">{{$dates}}</td>
+                <td class="table_content-detail"></td>
                 <td class="table_content-detail">{{$work->punch_in}}</td>
                 <td class="table_content-detail">{{$work->punch_out}}</td>
                 </tr>
@@ -34,14 +33,12 @@
                 @foreach ($rests as $rest)
                 <tr class="table_content">
                 <td class="table_content-detail">{{$rest->rest_in}}</td>
-                </tr>
-                @endforeach
-                <tr class="table_content">
-                <td class="table_content-detail">8:00</td>
+                <td class="table_content-detail"></td>
                 <td class="table_content-detail">
                     <a href="" class="table_content_detail-link">詳細</a>
                 </td>
-                </tr>                
+                </tr>
+                @endforeach               
                 
         </table>
     </div>

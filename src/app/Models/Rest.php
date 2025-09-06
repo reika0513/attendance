@@ -21,13 +21,22 @@ class Rest extends Model
         return $this->belongsTo(Work::class);
     }
 
-    public function getTodayRestIn($workId){
-        return self::where('work_id', $workId)->whereDate('rest_in', Carbon::today())->first();
+    public function getTodayRestIn(){
+        return self::where('work_id')->whereDate('rest_in', Carbon::today())->first();
     }
 
-    public function getTodayRestOut($workId){
-        return self::where('work_id', $workId)->whereDate('rest_out', Carbon::today())->first();
+    public function getTodayRestOut(){
+        return self::where('work_id')->whereDate('rest_out', Carbon::today())->first();
     }
 
+    public function getTotalRestTime($workId){
+        $rests = self::where('work_id', $workId)->get()->toArray();
+        $total_rests_time = 0;
+        foreach($rests as $rest){
+            $rest_time = Carbon::parse($rest['rest_out'])-Carbon::parse($rest['rest_in']);
+            $total_rests_time += $rest_time;
+        }
+        return $total_rests_time;
+    }
     
 }

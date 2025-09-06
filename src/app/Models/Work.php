@@ -38,4 +38,5 @@ class Work extends Model
         return self::where('user_id', $userId)->whereNull('punch_out')->first();
     }
     
+    
 }
