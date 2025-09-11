@@ -25,18 +25,14 @@
             </tr>
                 @foreach ($works as $work)
                 <tr class="table_content">
-                <td class="table_content-detail"></td>
-                <td class="table_content-detail">{{$work->punch_in}}</td>
-                <td class="table_content-detail">{{$work->punch_out}}</td>
-                </tr>
-                @endforeach
-                @foreach ($rests as $rest)
-                <tr class="table_content">
-                <td class="table_content-detail">{{$rest->rest_in}}</td>
-                <td class="table_content-detail"></td>
-                <td class="table_content-detail">
-                    <a href="" class="table_content_detail-link">詳細</a>
-                </td>
+                    <td class="table_content-detail"></td>
+                    <td class="table_content-detail">{{$work->punch_in}}</td>
+                    <td class="table_content-detail">{{$work->punch_out}}</td>
+                    <td class="table_content-detail">{{ $rests[$work->id] ?? '00:00' }}</td>
+                    <td class="table_content-detail"></td>
+                    <td class="table_content-detail">
+                        <a href="" class="table_content_detail-link">詳細</a>
+                    </td>
                 </tr>
                 @endforeach               
                 

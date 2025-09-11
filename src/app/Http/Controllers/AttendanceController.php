@@ -106,10 +106,11 @@ class AttendanceController extends Controller
 
         $work= new Work();
         $work_data = $work->getWorkingData($user->id);
-        $rest = new Rest();
-        $rest_time = $rest->getTotalRestTime(53);
-
-        dd($rest_time);
+        
+        $rests = [];
+        foreach ($works as $work) {
+            $rests[$work->id] = Rest::getTotalRestTime($work->id);
+        }
 
 
         return view('list', compact('dates','works','rests'));

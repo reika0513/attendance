@@ -33,10 +33,13 @@ class Rest extends Model
         $rests = self::where('work_id', $workId)->get()->toArray();
         $total_rests_time = 0;
         foreach($rests as $rest){
-            $rest_time = Carbon::parse($rest['rest_out'])-Carbon::parse($rest['rest_in']);
+            $rest_time = Carbon::parse($rest['rest_out'])->diffInMinutes(Carbon::parse($rest['rest_in']));
             $total_rests_time += $rest_time;
         }
-        return $total_rests_time;
+        $hours = floor($total_rests_time / 60);
+        $minutes = $total_rests_time % 60;
+
+        return sprintf('%02d:%02d', $hours, $minutes);
     }
-    
+        
 }
