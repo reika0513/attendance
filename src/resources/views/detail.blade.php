@@ -13,15 +13,17 @@
         <div class="detail_content">
             <div class="detail_name">
                 <p>名前</p>
-                <input type="text">
+                <p>田中 太郎</p>
             </div>
             <div class="detail_date">
                 <p>日付</p>
-                <input type="text"><span>年</span>
-                <input type="text">
+                <p>2023<span>年</span></p>
+                <p>09<span>月</span>13<span>日</span></p>
             </div>
             <div class="detail_attendance">
                 <p>出勤・退勤</p>
+                <input type="text">
+                <p>～</p>
                 <input type="text">
             </div>
             <div class="detail_rest">
@@ -40,7 +42,7 @@
             </div>
             <div class="detail_remarks">
                 <p>備考</p>
-                <input type="textarea">
+                <textarea name="" id=""></textarea>
             </div>
         </div>
     </form>

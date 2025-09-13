@@ -17,3 +17,10 @@
     background-color: #FFFFFF;
     border-radius: 10px;
 }
+
+.detail_name, .detail_date, .detail_attendance, 
+.detail_rest, .detail_rest-input, .detail_remarks{
+    padding: 15px 50px;
+    display: flex;
+    justify-content: space-between;
+}

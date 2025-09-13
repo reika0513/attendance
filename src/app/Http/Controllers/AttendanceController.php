@@ -111,7 +111,7 @@ class AttendanceController extends Controller
 
         $totals = [];
         foreach ($works as $work) {
-            $totals[$work->id] = Work::getTotalWorkTime($user->id);
+            $totals[$work->id] = Work::getTotalWorkTime($work->id);
         }
 
         $pages = Work::simplePaginate(30);
