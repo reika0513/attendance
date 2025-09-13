@@ -37,6 +37,24 @@ class Work extends Model
     public function getWorkingData($userId){
         return self::where('user_id', $userId)->whereNull('punch_out')->first();
     }
+
+    protected $casts = [
+    'punch_in' => 'datetime',
+    'punch_out' => 'datetime'
+    ];
+
     
     
+    public function getTotalWorkTime($userId){
+        $total_works = self::where('user_id', $userId)->get();
+        $total_works_time = 0;
+        foreach($total_works as $work){
+            $work_time = Carbon::parse($work['punch_out'])->diffInMinutes(Carbon::parse($work['punch_in']));
+            $total_works_time += $work_time;
+        }
+        $hours = floor($total_works_time / 60);
+        $minutes = $total_works_time % 60;
+
+        return sprintf('%02d:%02d', $hours, $minutes);
+    }
 }

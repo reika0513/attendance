@@ -30,7 +30,7 @@ class Rest extends Model
     }
 
     public function getTotalRestTime($workId){
-        $rests = self::where('work_id', $workId)->get()->toArray();
+        $rests = self::where('work_id', $workId)->get();
         $total_rests_time = 0;
         foreach($rests as $rest){
             $rest_time = Carbon::parse($rest['rest_out'])->diffInMinutes(Carbon::parse($rest['rest_in']));

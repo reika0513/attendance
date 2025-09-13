@@ -1,0 +1,19 @@
+.detail {
+    max-width: 1540px;
+    height: 2000px;
+}
+
+.detail_title {
+    margin: 80px 0px 40px 250px;
+    border-left: solid 8px #000000;
+    padding-left: 25px;
+}
+
+.detail_form {
+    width: 900px;
+    height: 555px;
+    margin: 40px 0px 20px 250px;
+    padding: 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}

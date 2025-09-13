@@ -99,21 +99,28 @@ class AttendanceController extends Controller
 
     public function list(){
         $date = Carbon::today();
-        $dates = $date->format('m/d');
+        $dates = $date->format('Y/m');
 
         $user = Auth::user();
         $works = Work::where('user_id', $user->id)->get();
 
-        $work= new Work();
-        $work_data = $work->getWorkingData($user->id);
-        
         $rests = [];
         foreach ($works as $work) {
             $rests[$work->id] = Rest::getTotalRestTime($work->id);
         }
 
+        $totals = [];
+        foreach ($works as $work) {
+            $totals[$work->id] = Work::getTotalWorkTime($user->id);
+        }
 
-        return view('list', compact('dates','works','rests'));
+        $pages = Work::simplePaginate(30);
+
+        return view('list', compact('dates','works','rests', 'totals', 'pages'));
+    }
+
+    public function detail(){
+        return view('detail');
     }
 
     public function applicationWait(){
