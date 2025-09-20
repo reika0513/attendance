@@ -32,7 +32,7 @@
             <td class="table_content-detail">{{ $rests[$work->id] ?? '00:00' }}</td>
             <td class="table_content-detail">{{ $totals[$work->id] ?? '00:00' }}</td>
             <td class="table_content-detail">
-                <a href="/detail" class="table_content_detail-link">詳細</a>
+                <a href="/detail/{{$work->id}}" class="table_content_detail-link">詳細</a>
             </td>
         </tr>
         @endforeach               

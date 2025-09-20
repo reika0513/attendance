@@ -106,12 +106,23 @@ class AttendanceController extends Controller
 
         $rests = [];
         foreach ($works as $work) {
-            $rests[$work->id] = Rest::getTotalRestTime($work->id);
+            $rest_minutes = Rest::totalRestMinutes($work->id);
+
+            $hours = floor($rest_minutes / 60);
+            $minutes = $rest_minutes % 60;
+            $rests[$work->id] = sprintf('%02d:%02d', $hours, $minutes);
         }
 
         $totals = [];
         foreach ($works as $work) {
-            $totals[$work->id] = Work::getTotalWorkTime($work->id);
+            $work_minutes = Work::totalWorkMinutes($work->id);
+            $rest_minutes = Rest::totalRestMinutes($work->id);
+
+            $net_minutes = $work_minutes - $rest_minutes;
+
+            $hours = floor($net_minutes / 60);
+            $minutes = $net_minutes % 60;
+            $totals[$work->id] = sprintf('%02d:%02d', $hours, $minutes);
         }
 
         $pages = Work::simplePaginate(30);
@@ -119,8 +130,11 @@ class AttendanceController extends Controller
         return view('list', compact('dates','works','rests', 'totals', 'pages'));
     }
 
-    public function detail(){
-        return view('detail');
+    public function detail($work_id){
+        $user = Auth::user();
+        $work = Work::where('user_id', $user->id)->findOrFail($work_id);
+        $rests = $work->rest;
+        return view('detail', compact('work', 'rests'));
     }
 
     public function applicationWait(){

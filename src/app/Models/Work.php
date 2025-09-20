@@ -5,7 +5,6 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
-use App\Models\Rest;
 
 class Work extends Model
 {
@@ -46,18 +45,17 @@ class Work extends Model
 
     
     
-    public function getTotalWorkTime($workId){
+    public function totalWorkMinutes($workId){
         $total_works = self::where('id', $workId)->get();
         $total_works_time = 0;
         foreach($total_works as $work){
             $work_time = Carbon::parse($work['punch_out'])->diffInMinutes(Carbon::parse($work['punch_in']));
             $total_works_time += $work_time;
         }
-        $hours = floor($total_works_time / 60);
-        $minutes = $total_works_time % 60;
-
-        return sprintf('%02d:%02d', $hours, $minutes);
+        return $total_works_time;
     }
+
+    
 
     
 }
