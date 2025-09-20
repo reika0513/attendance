@@ -9,6 +9,7 @@ use App\Models\Rest;
 use Auth;
 use Carbon\Carbon;
 use Carbon\CarbonPeriod;
+use App\Http\Requests\CorrectionRequest;
 
 class AttendanceController extends Controller
 {
@@ -134,7 +135,11 @@ class AttendanceController extends Controller
         $user = Auth::user();
         $work = Work::where('user_id', $user->id)->findOrFail($work_id);
         $rests = $work->rest;
-        return view('detail', compact('work', 'rests'));
+        return view('detail', compact('user', 'work', 'rests'));
+    }
+
+    public function postCorrection(CorrectionRequest $request){
+        return redirect('detail');
     }
 
     public function applicationWait(){
