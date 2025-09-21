@@ -26,7 +26,7 @@ class CorrectionRequest extends FormRequest
     return [
         'work' => ['required', 'min:'],
         'rest' => ['required'],
-        'remarks' => ['required']
+        'remark' => ['required']
     ];
     }
 

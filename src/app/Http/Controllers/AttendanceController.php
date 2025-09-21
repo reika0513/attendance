@@ -139,7 +139,36 @@ class AttendanceController extends Controller
     }
 
     public function postCorrection(CorrectionRequest $request){
-        return redirect('detail');
+        $work = Work::findOrFail($work_id);
+
+        $work->update([
+        'punch_in'  => $request->punch_in,
+        'punch_out' => $request->punch_out,
+        'remark'    => $request->remark,
+        ]);
+
+        if ($request->has('rests')) {
+        foreach ($request->rests as $restId => $restData) {
+            $rest = Rest::find($restId);
+            if ($rest) {
+                $rest->update([
+                    'rest_in'  => $restData['rest_in'],
+                    'rest_out' => $restData['rest_out'],
+                ]);
+            }
+        }
+        }
+
+        if (!empty($request->new_rest['rest_in']) && !empty($request->new_rest['rest_out'])) {
+            Rest::create([
+                'work_id'  => $work->id,
+                'rest_in'  => $request->new_rest['rest_in'],
+                'rest_out' => $request->new_rest['rest_out'],
+            ]);
+        }
+        dd($request->all());
+        return redirect('/attendance/list')->with('success', '修正が完了しました');
+        
     }
 
     public function applicationWait(){

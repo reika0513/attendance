@@ -13,7 +13,8 @@ class Work extends Model
         'id',
         'user_id',
         'punch_in',
-        'punch_out'
+        'punch_out',
+        'remark'
     ];
 
     public function user()
