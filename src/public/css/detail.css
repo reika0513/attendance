@@ -81,3 +81,9 @@ input {
     color: #FFFFFF;
     background-color: #000000;
 }
+
+.error_message{
+    margin: 15px;
+    font-size: 14px;
+    color: red;
+}

@@ -28,6 +28,11 @@
                 <input name="punch_in" type="time" class="detail_attendance-text" value="{{ $work && $work->punch_in ? $work->punch_in->format('H:i') : '' }}">
                 <p class="detail_attendance-text">～</p>
                 <input name="punch_out" type="time" class="detail_attendance-text" value="{{ $work && $work->punch_out ? $work->punch_out->format('H:i') : '' }}">
+                <div class="error_message">
+                    @error('punch_in')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
 
             <div class="detail_rest">
@@ -39,6 +44,11 @@
                 <input name="rests[{{ $rest->id }}][rest_in]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_in)->format('H:i') }}">
                 <p class="detail_rest-text">～</p>
                 <input name="rests[{{ $rest->id }}][rest_out]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_out)->format('H:i') }}">
+                </div>
+                <div class="error_message">
+                    @error('rests.*.rest_in')
+                        {{ $message }}
+                    @enderror
                 </div>
                 @endforeach
             </div>
@@ -53,9 +63,11 @@
             <div class="detail_remarks">
                 <p class="detail_content-title">備考</p>
                 <textarea name="remark" class="detail_remarks-text" rows="3" cols="35"></textarea>
-                @error('remark')
-                            {{ $message }}
-                @enderror
+                <div class="error_message">
+                    @error('remark')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
             <button class="form_button" type="submit">修正</button>
         </div>

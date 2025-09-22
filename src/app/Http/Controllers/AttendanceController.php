@@ -138,7 +138,7 @@ class AttendanceController extends Controller
         return view('detail', compact('user', 'work', 'rests'));
     }
 
-    public function postCorrection(CorrectionRequest $request){
+    public function postCorrection(CorrectionRequest $request, $work_id){
         $work = Work::findOrFail($work_id);
 
         $work->update([
@@ -166,7 +166,7 @@ class AttendanceController extends Controller
                 'rest_out' => $request->new_rest['rest_out'],
             ]);
         }
-        dd($request->all());
+        
         return redirect('/attendance/list')->with('success', '修正が完了しました');
         
     }

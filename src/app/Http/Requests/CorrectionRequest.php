@@ -24,16 +24,18 @@ class CorrectionRequest extends FormRequest
     public function rules()
     {
     return [
-        'work' => ['required', 'min:'],
-        'rest' => ['required'],
-        'remark' => ['required']
+      'punch_in' => 'before:punch_out',
+      'rests.*.rest_in' => 'before:rests.*.rest_out',
+      'remark' => 'required'
     ];
     }
 
     public function messages()
   {
     return [
-      'remarks.required' => '備考を記入してください',
+      'punch_in.before' => '出勤時間もしくは退勤時間が不適切な値です',
+      'rests.*.rest_in.before' => '休憩時間が勤務時間外です',
+      'remark.required' => '備考を記入してください',
     ];
   }
 }
