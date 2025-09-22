@@ -131,6 +131,7 @@ class AttendanceController extends Controller
         return view('list', compact('dates','works','rests', 'totals', 'pages'));
     }
 
+
     public function detail($work_id){
         $user = Auth::user();
         $work = Work::where('user_id', $user->id)->findOrFail($work_id);
@@ -141,11 +142,16 @@ class AttendanceController extends Controller
     public function postCorrection(CorrectionRequest $request, $work_id){
         $work = Work::findOrFail($work_id);
 
-        $work->update([
-        'punch_in'  => $request->punch_in,
-        'punch_out' => $request->punch_out,
-        'remark'    => $request->remark,
-        ]);
+        $work_date = $work->punch_in->format('Y-m-d');
+        if ($request->punch_in) {
+        $work->punch_in = Carbon::parse($work_date.' '.$request->punch_in);
+        }
+        if ($request->punch_out) {
+            $work->punch_out = Carbon::parse($work_date.' '.$request->punch_out);
+        }
+
+        $work->remark = $request->remark;
+        $work->save();
 
         if ($request->has('rests')) {
         foreach ($request->rests as $restId => $restData) {

@@ -45,12 +45,15 @@
                 <p class="detail_rest-text">～</p>
                 <input name="rests[{{ $rest->id }}][rest_out]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_out)->format('H:i') }}">
                 </div>
+                @endforeach
                 <div class="error_message">
                     @error('rests.*.rest_in')
                         {{ $message }}
                     @enderror
+                    @error('rests.*.rest_out')
+                        {{ $message }}
+                    @enderror
                 </div>
-                @endforeach
             </div>
 
             <div class="detail_rest-input">
@@ -58,11 +61,19 @@
                 <input name="new_rest[rest_in]" type="time" class="detail_rest-input-text">
                 <p class="detail_rest-input-text">～</p>
                 <input name="new_rest[rest_out]" type="time" class="detail_rest-input-text">
+                <div class="error_message">
+                    @error('new_rest.rest_in')
+                        {{ $message }}
+                    @enderror
+                    @error('new_rest.rest_out')
+                        {{ $message }}
+                    @enderror
+                </div>
             </div>
 
             <div class="detail_remarks">
                 <p class="detail_content-title">備考</p>
-                <textarea name="remark" class="detail_remarks-text" rows="3" cols="35"></textarea>
+                <textarea name="remark" class="detail_remarks-text" rows="3" cols="35">{{ old('remark') }}</textarea>
                 <div class="error_message">
                     @error('remark')
                         {{ $message }}
