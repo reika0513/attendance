@@ -21,12 +21,17 @@ class Rest extends Model
         return $this->belongsTo(Work::class);
     }
 
-    public function getTodayRestIn(){
-        return self::where('work_id')->whereDate('rest_in', Carbon::today())->first();
+    public function getTodayRest($workId){
+        return self::where('work_id', $workId)->where(function ($q) {
+            $q->whereDate('rest_in', Carbon::today())
+              ->orWhereDate('rest_out', Carbon::today());
+        })
+        ->orderByDesc('id')
+        ->first();
     }
 
-    public function getTodayRestOut(){
-        return self::where('work_id')->whereDate('rest_out', Carbon::today())->first();
+    public function getTodayRestOut($workId){
+        return self::where('work_id', $workId)->whereDate('rest_in', Carbon::today())->orderBy('rest_out', 'desc')->first();
     }
 
     protected $casts = [

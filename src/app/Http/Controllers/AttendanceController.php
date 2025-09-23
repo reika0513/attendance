@@ -16,22 +16,23 @@ class AttendanceController extends Controller
     public function stamp(){
         $user = Auth::user();
         $status="";
-        $works=new Work();
-        $rests=new Rest();
+        $works = new Work();
+        $rests = new Rest();
+
         $today_punch_in=$works->getTodayPunchIn($user->id);
         if($today_punch_in==null){
             $status="勤務外";
         }else{
             $status="出勤中";
-        }
-        $today_punch_out=$works->getTodayPunchOut($user->id);
-        if($today_punch_out!=null){
-            $status="退勤済";
-        }
-        $today_rest_in=$rests->getTodayRestIn($works->id);
-        $today_rest_out=$rests->getTodayRestOut($works->id);
-        if($today_rest_in!=null && $today_rest_out==null){
-            $status="休憩中";
+        
+            $today_punch_out=$works->getTodayPunchOut($user->id);
+            if($today_punch_out!=null){
+                $status="退勤済";
+            }
+            $today_rest = $rests->getTodayRest($today_punch_in->id);
+            if ($today_rest && $today_rest->rest_in && !$today_rest->rest_out) {
+            $status = "休憩中";
+            }
         }
         return view('stamp')->with('status', $status);
     

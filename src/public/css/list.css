@@ -4,14 +4,14 @@
 }
 
 .detail_title {
-    margin: 80px 0px 40px 250px;
+    margin: 80px 0px 40px 300px;
     border-left: solid 8px #000000;
     padding-left: 25px;
 }
 
 .list_month{
     width: 900px;
-    margin: 40px 0px 20px 250px;
+    margin: 40px auto;
     padding: 20px;
     background-color: #FFFFFF;
     border-radius: 10px;
@@ -35,7 +35,7 @@
 
 .list_day{
     width: 900px;
-    margin: 20px 0px 20px 250px;
+    margin: 20px auto 20px;
     background-color: #FFFFFF;
     border-radius: 10px;
 }

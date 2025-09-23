@@ -13,9 +13,16 @@
 .detail_content {
     width: 900px;
     height: 555px;
+    overflow-y: auto;
     margin: 40px auto;
     background-color: #FFFFFF;
     border-radius: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.detail_content::-webkit-scrollbar {
+    display: none;
 }
 
 .detail_name, .detail_date, .detail_attendance, 
@@ -23,6 +30,11 @@
     padding: 15px 50px;
     border-bottom: solid 3px #E1E1E1;
     display: flex;
+}
+
+.detail_date-content{
+    display: flex;
+    margin-left: 20px;
 }
 
 .detail_rest-item{
@@ -39,6 +51,7 @@
     color: #737373;
     font-weight: bold;
     margin-right: 180px;
+    height: 20px;
 }
 
 input {
@@ -51,8 +64,17 @@ input {
 .detail_rest-text, .detail_rest-input-text{
     font-weight: bold;
     height: 28px;
-    margin: 15px 0px;
+    margin: 15px;
     font-size: 16px;
+}
+
+.detail_rest-content, .detail_rest-input-text {
+    margin-left: 50px;
+}
+
+.detail_span{
+    font-weight: bold;
+    margin: 15px;
 }
 
 .detail_attendance-text::-webkit-calendar-picker-indicator,
@@ -68,18 +90,24 @@ input {
 .detail_remarks-text{
     font-weight: bold;
     resize: none;
+    margin-left: 60px;
     border: solid 1px #E1E1E1;
 }
 
 .form_button{
+    width: 900px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.button{
     width: 130px;
     height: 50px;
-    margin: 50px 780px;
-    border-radius: 5px;
     font-size: 22px;
     font-weight: bold;
     color: #FFFFFF;
     background-color: #000000;
+    border-radius: 5px;
 }
 
 .error_message{
