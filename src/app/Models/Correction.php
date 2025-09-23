@@ -16,10 +16,13 @@ class Correction extends Model
         'rest_id',
         'punch_in',
         'punch_out',
-        'rest_in',
-        'rest_out',
+        'rests',
         'remark',
         'status',
+    ];
+
+    protected $casts = [
+        'rests' => 'array',
     ];
     
     const STATUS_PENDING  = 0;

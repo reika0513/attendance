@@ -86,9 +86,15 @@
             </div>
             
         </div>
+        @if($status == 0)
+        <div class="message">
+            <p class="correction_message">* 承認待ちのため修正できません。</p>
+        </div>
+        @elseif ($status == 1 || $status == null)
         <div class="form_button">
             <button class="button" type="submit">修正</button>
         </div>
+       @endif
     </form>
 </div>
 
