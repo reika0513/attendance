@@ -27,6 +27,11 @@ class Work extends Model
         return $this->hasMany(Rest::class);
     }
 
+    public function correction()
+    {
+        return $this->hasOne(Correction::class);
+    }
+
     public function getTodayPunchIn($userId){
         return self::where('user_id', $userId)->whereDate('punch_in', Carbon::today())->first();
     } 

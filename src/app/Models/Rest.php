@@ -21,6 +21,11 @@ class Rest extends Model
         return $this->belongsTo(Work::class);
     }
 
+    public function correction()
+    {
+        return $this->hasOne(Correction::class);
+    }
+
     public function getTodayRest($workId){
         return self::where('work_id', $workId)->where(function ($q) {
             $q->whereDate('rest_in', Carbon::today())
