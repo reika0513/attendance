@@ -188,7 +188,14 @@ class AttendanceController extends Controller
     }
 
     public function applicationWait(){
-        return view('application_wait');
+        $user = Auth::user();
+        $work = Work::where('user_id', $user->id)->get();
+        
+        $corrections = Correction::where('status', Correction::STATUS_PENDING)
+        ->with(['user', 'work']) 
+        ->get();
+
+        return view('application_wait', compact('user', 'corrections'));
     }
 
     public function applicationFinish(){

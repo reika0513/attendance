@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 class Correction extends Model
 {
@@ -23,6 +24,8 @@ class Correction extends Model
 
     protected $casts = [
         'rests' => 'array',
+        'punch_in' => 'datetime',
+        'punch_out' => 'datetime'
     ];
     
     const STATUS_PENDING  = 0;
@@ -42,4 +45,5 @@ class Correction extends Model
     {
         return $this->belongsTo(Rest::class);
     }
+
 }
