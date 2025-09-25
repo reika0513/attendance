@@ -86,15 +86,15 @@
             </div>
             
         </div>
-        @if($status == 0)
-        <div class="message">
+        @if($status === 0)
+        <div class="form_button-message">
             <p class="correction_message">* 承認待ちのため修正できません。</p>
         </div>
-        @elseif ($status == 1 || $status == null)
+        @else
         <div class="form_button">
             <button class="button" type="submit">修正</button>
         </div>
-       @endif
+        @endif
     </form>
 </div>
 

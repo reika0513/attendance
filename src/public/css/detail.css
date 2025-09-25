@@ -94,10 +94,14 @@ input {
     border: solid 1px #E1E1E1;
 }
 
-.form_button{
+.form_button-message, .form_button{
     width: 900px;
     margin: 0 auto;
     text-align: right;
+}
+
+.correction_message{
+    color: #FF000080;
 }
 
 .button{
