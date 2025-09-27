@@ -4,6 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use Illuminate\Http\Request;
 use Laravel\Fortify\Contracts\LoginResponse as LoginResponseContract;
+use Laravel\Fortify\Contracts\LogoutResponse;
+
 
 class LoginResponse implements LoginResponseContract
 {
@@ -12,7 +14,7 @@ class LoginResponse implements LoginResponseContract
         $user = auth()->user();
 
         if ($user->role === 'admin') {
-            return redirect()->intended('/attendance/list');
+            return redirect()->intended('/admin/attendance/list');
         }
 
         return redirect()->intended('/attendance');

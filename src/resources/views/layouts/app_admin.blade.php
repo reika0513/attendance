@@ -12,7 +12,7 @@
 <body>
     <header class="header">
         <div class="header__inner">
-            <a class="header__logo" href="/attendance">
+            <a class="header__logo" href="/admin/attendance/list">
                 COACHTECH
             </a>
             @if (Auth::check())

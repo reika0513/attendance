@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AttendanceController;
+use Laravel\Fortify\Http\Controllers\AuthenticatedSessionController;
 use App\Http\Controllers\AdminController;
 use Illuminate\Support\Facades\Route;
 
@@ -30,5 +31,10 @@ Route::middleware('auth')->group(function () {
 
 
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/attendance/list', [AdminController::class, 'admin_list']);
+    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+        ->name('admin.login');
+    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('admin.logout');
+    Route::get('/attendance/list', [AdminController::class, 'index']);
 });

@@ -8,13 +8,13 @@ use App\Actions\Fortify\UpdateUserPassword;
 use App\Actions\Fortify\UpdateUserProfileInformation;
 use App\Http\Requests\UserRequest;
 use App\Http\Controllers\Auth\LoginResponse;
+use App\Http\Controllers\Auth\LogoutResponse;
 use Illuminate\Cache\RateLimiting\Limit;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\RateLimiter;
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Support\Str;
 use Laravel\Fortify\Fortify;
-use Laravel\Fortify\Contracts\LogoutResponse;
 use Laravel\Fortify\Http\Requests\UserRequest as FortifyLoginRequest;
 
 class FortifyServiceProvider extends ServiceProvider
@@ -29,12 +29,7 @@ class FortifyServiceProvider extends ServiceProvider
             \App\Http\Controllers\Auth\LoginResponse::class
         );
         
-        // $this->app->instance(LogoutResponse::class, new class implements LogoutResponse {
-        //     public function toResponse($request)
-        //     {
-        //         return redirect('/login');
-        //     }
-        // });
+        $this->app->singleton(LogoutResponse::class, \App\Http\Controllers\Auth\LogoutResponse::class);
     }
 
     /**
