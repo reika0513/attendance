@@ -187,18 +187,20 @@ class AttendanceController extends Controller
 
     }
 
-    public function applicationWait(){
+    public function applicationList(Request $request){
         $user = Auth::user();
-        $work = Work::where('user_id', $user->id)->get();
+        $tab = $request->get('tab', 'wait'); 
+
+        $status = $tab === 'finish' 
+            ? Correction::STATUS_APPROVED 
+            : Correction::STATUS_PENDING;
+
+        $corrections = Correction::where('user_id', $user->id)
+            ->where('status', $status)
+            ->with('work') 
+            ->get();
+
+        return view('application_list', compact('corrections', 'tab'));
         
-        $corrections = Correction::where('status', Correction::STATUS_PENDING)
-        ->with(['user', 'work']) 
-        ->get();
-
-        return view('application_wait', compact('user', 'corrections'));
-    }
-
-    public function applicationFinish(){
-        return view('application_finish');
     }
 }

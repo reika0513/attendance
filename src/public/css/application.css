@@ -17,18 +17,15 @@
     margin: 0px auto;
 }
 
-.header-wait{
-    font-weight: bold;
-}
-
-.header-wait, .header-finish{
+.header-tab {
     text-decoration: none;
     font-size: 16px;
     padding: 15px 55px;
     color: #000000;
+    font-weight: bold;
 }
 
-.application_wait {
+.application_table-content {
     width: 900px;
     margin: 50px auto;
     background-color: #FFFFFF;

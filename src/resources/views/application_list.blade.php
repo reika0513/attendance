@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/application_wait.css') }}">
+<link rel="stylesheet" href="{{ asset('css/application.css') }}">
 @endsection
 
 @section('content')
@@ -10,12 +10,12 @@
 
     <div class="application_content">
         <div class="content_header">
-            <a href="/stamp_correction_request/list_wait" class="header-wait">承認待ち</a>
-            <a href="/stamp_correction_request/list_finish" class="header-finish">承認済み</a>
+            <a href="/stamp_correction_request/list?tab=wait" class="header-tab {{ $tab === 'wait' ? 'active' : '' }}">承認待ち</a>
+            <a href="/stamp_correction_request/list?tab=finish" class="header-tab {{ $tab === 'finish' ? 'active' : '' }}">承認済み</a>
         </div>
 
-        <div class="application_wait">
-            <table class="application_wait-table">
+        <div class="application_table">
+            <table class="application_table-content">
                 <tr class="table_title">
                     <th class="table_content">状態</th>
                     <th class="table_content">名前</th>
@@ -27,13 +27,13 @@
                 
                 @foreach ($corrections as $correction)
                 <tr class="table_title">
-                    <th class="table_content">承認待ち</th>
-                    <td class="table_content">{{$user->name}}</td>
+                    <th class="table_content">{{ $tab === 'wait' ? '承認待ち' : '承認済み' }}</th>
+                    <td class="table_content">{{$correction->user->name}}</td>
                     <td class="table_content">{{$correction->punch_in->format('Y/m/d') }}</td>
                     <td class="table_content">{{$correction->remark}}</td>
                     <td class="table_content">{{$correction->created_at->format('Y/m/d') }}</td>
                     <td class="table_content">
-                        <a href="" class="table_content-detail">詳細</a>
+                        <a href="/attendance/{{$correction->work->id}}" class="table_content-detail">詳細</a>
                     </td>
                 </tr>
                 @endforeach

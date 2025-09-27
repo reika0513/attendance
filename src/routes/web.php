@@ -24,6 +24,5 @@ Route::middleware('auth')->group(function () {
     Route::get('/attendance/list', [AttendanceController::class, 'list']);
     Route::get('/attendance/{work_id}', [AttendanceController::class, 'detail']);
     Route::post('/correction/{work_id}', [AttendanceController::class, 'postCorrection']);
-    Route::get('/stamp_correction_request/list_wait', [AttendanceController::class, 'applicationWait']);
-    Route::get('/stamp_correction_request/list_finish', [AttendanceController::class, 'applicationFinish']);
+    Route::get('/stamp_correction_request/list', [AttendanceController::class, 'applicationList']);
 });
