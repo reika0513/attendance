@@ -9,7 +9,7 @@
     <div class="detail_title">
         <h1 class="title">勤怠詳細</h1>
     </div>
-    <form class="detail_form" action="/stamp_correction_request/approve/{{$correction->id}}" method="post">
+    <form class="detail_form" action="/admin/stamp_correction_request/approve/{{$correction->id}}" method="post">
         @csrf
         <div class="detail_content">
             <div class="detail_name">

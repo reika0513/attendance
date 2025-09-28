@@ -52,7 +52,7 @@
             </div>
         </div>
         <div class="form_button">
-            <a href="/admin/attendance/list" class="form_button-submit">管理者ログインする</a>
+            <button class="form_button-submit" type="submit">管理者ログインする</button>
         </div>
     </form>
 </div>

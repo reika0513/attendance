@@ -36,21 +36,14 @@
     border: solid 1px #5F5F5F;
 }
 
-.form_button {
+.form_button-submit {
     width: 680px;
-    height: 59px;
-    margin-top: 70px;
-    padding-top: 10px;
-    background-color: #000000;
-    border: none;
-    text-align: center;
-    border-radius: 5px;
-}
-
-.form_button-submit{
     height: 59px;
     font-size: 24px;
     font-weight: 700;
-    text-decoration: none;
+    margin-top: 80px;
+    background-color: #000000;
     color: #ffffff;
+    border: none;
+    border-radius: 5px;
 }

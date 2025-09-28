@@ -29,14 +29,17 @@ Route::middleware('auth')->group(function () {
     Route::get('/stamp_correction_request/list', [AttendanceController::class, 'applicationList']);
 });
 
-
-    Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
+Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
         ->name('admin.login');
+Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
+    
+Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
-    Route::get('/admin/attendance/list', [AdminController::class, 'list']);
-    Route::get('/admin/attendance/{work_id}', [AdminController::class, 'detail']);
-    Route::post('/admin/correction/{work_id}', [AdminController::class, 'postCorrection']);
-    Route::get('/admin/stamp_correction_request/list', [AdminController::class, 'applicationList']);
+    Route::get('/attendance/list', [AdminController::class, 'list']);
+    Route::get('/attendance/{work_id}', [AdminController::class, 'detail']);
+    Route::post('/correction/{work_id}', [AdminController::class, 'postCorrection']);
+    Route::get('/stamp_correction_request/list', [AdminController::class, 'applicationList']);
     Route::get('/stamp_correction_request/{correction_id}', [AdminController::class, 'getApprovalDetail']);
     Route::post('/stamp_correction_request/approve/{correction_id}', [AdminController::class, 'approveCorrection']);
 
+});

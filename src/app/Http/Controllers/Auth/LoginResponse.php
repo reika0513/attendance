@@ -14,6 +14,10 @@ class LoginResponse implements LoginResponseContract
         $user = auth()->user();
         session(['auth_role' => $user->role]);
 
+        if ($user->role === 'admin') {
+            return redirect('/admin/attendance/list');
+        }
+
         return redirect('/attendance');
     }
 }

@@ -33,7 +33,7 @@
                     <td class="table_content">{{$correction->remark}}</td>
                     <td class="table_content">{{$correction->created_at->format('Y/m/d') }}</td>
                     <td class="table_content">
-                        <a href="/stamp_correction_request/{{$correction->id}}" class="table_content-detail">詳細</a>
+                        <a href="/admin/stamp_correction_request/{{$correction->id}}" class="table_content-detail">詳細</a>
                     </td>
                 </tr>
                 @endforeach

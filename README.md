@@ -40,16 +40,16 @@ php artisan db:seed
 ## ログイン情報
 * 一般ユーザー
 ``` text
-name: ???
-email: ???
-password: ??? 
+name: 山田太郎
+email: attendance@coachtech.com
+password: attendance1234
 ```
 
 * 管理者ユーザー
 ``` text
-name: ???
-email: ???
-password: ??? 
+name: 山田加奈子
+email: admin_attendance@coachtech.com
+password: admin1234
 ```
 
 ## 使用技術(実行環境)
