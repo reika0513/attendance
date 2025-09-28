@@ -32,4 +32,9 @@ Route::middleware('auth')->group(function () {
 
     Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
         ->name('admin.login');
+
     Route::get('/admin/attendance/list', [AdminController::class, 'list']);
+    Route::get('/admin/attendance/{work_id}', [AdminController::class, 'detail']);
+    Route::post('/admin/correction/{work_id}', [AdminController::class, 'postCorrection']);
+    Route::get('/admin/stamp_correction_request/list', [AdminController::class, 'applicationList']);
+

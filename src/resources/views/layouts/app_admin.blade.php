@@ -18,7 +18,7 @@
             <div class="header_button">
                 <a class="button_stamp" href="/admin/attendance/list">勤怠一覧</a>
                 <a class="button_list" href="/admin/staff/list">スタッフ一覧</a>
-                <a class="button_application" href="/stamp_correction_request/list">申請一覧</a>
+                <a class="button_application" href="/admin/stamp_correction_request/list">申請一覧</a>
                     <a class="button_application">ログアウト</a>
             </div>
         </div>
