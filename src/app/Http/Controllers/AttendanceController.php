@@ -159,7 +159,7 @@ class AttendanceController extends Controller
             foreach ($request->rests as $restId => $restData) {
                 $rests[] = [
                 'rest_id'  => $restId,
-                'rest_in'  => $restData['rest_in'] ? Carbon::parse($work_date.' '.$restData['rest_in']) : null,
+                'rest_in'  => $restData['rest_in'] ? Carbon::parse($work_date.' '.$restData['rest_in'] ) : null,
                 'rest_out' => $restData['rest_out'] ? Carbon::parse($work_date.' '.$restData['rest_out']) : null,
             ];
             }

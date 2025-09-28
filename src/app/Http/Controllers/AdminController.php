@@ -50,14 +50,8 @@ class AdminController extends Controller
     public function detail($work_id){
         $work = Work::findOrFail($work_id);
         $rests = $work->rest;
-
-        $correction = Correction::where('work_id', $work->id)
-        ->where('user_id', $work->user->id)
-        ->latest()
-        ->first();
-        $status = $correction ? $correction->status : null;
-
-        return view('admin_detail', ['user' => $work->user, 'work'=>$work, 'rests'=>$rests, 'status'=>$status]);
+        
+        return view('admin_detail', ['user' => $work->user, 'work'=>$work, 'rests'=>$rests]);
     }
 
 
@@ -110,6 +104,15 @@ class AdminController extends Controller
         
     }
 
-    
+    public function getApprovalDetail($correction_id){
+        $correction = Correction::with(['user', 'work'])->findOrFail($correction_id);
+        
+        return view('approval', [
+        'correction' => $correction,
+        'user'       => $correction->user ?? $correction->work->user,
+        'work'       => $correction->work,
+        'status'     => $correction->status,
+        ]);
+    }
 
 }

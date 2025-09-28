@@ -1,0 +1,131 @@
+.detail {
+    max-width: 1540px;
+    height: 2000px;
+}
+
+.detail_title {
+    width: 900px;
+    margin: 80px auto 40px;
+    border-left: solid 8px #000000;
+    padding-left: 25px;
+}
+
+.detail_content {
+    width: 900px;
+    height: 555px;
+    overflow-y: auto;
+    margin: 40px auto;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
+
+.detail_content::-webkit-scrollbar {
+    display: none;
+}
+
+.detail_name,
+.detail_date,
+.detail_attendance,
+.detail_rest,
+.detail_rest-input {
+    padding: 15px 50px;
+    border-bottom: solid 3px #E1E1E1;
+    display: flex;
+}
+
+.detail_date-content {
+    display: flex;
+    margin-left: 20px;
+}
+
+.detail_rest-item {
+    margin-right: 20px;
+    display: flex;
+}
+
+.detail_remarks {
+    padding: 15px 50px;
+    display: flex;
+}
+
+.detail_content-title {
+    color: #737373;
+    font-weight: bold;
+    margin-right: 180px;
+    height: 20px;
+}
+
+input {
+    border: solid 1px #E1E1E1;
+    width: 100px;
+    text-align: center;
+    border: none;
+}
+
+.detail_name-text,
+.detail_date-text,
+.detail_attendance-text,
+.detail_rest-text,
+.detail_rest-input-text {
+    font-weight: bold;
+    height: 28px;
+    margin: 15px;
+    font-size: 16px;
+}
+
+.detail_rest-content,
+.detail_rest-input-text {
+    margin-left: 50px;
+}
+
+.detail_span {
+    font-weight: bold;
+    margin: 15px;
+}
+
+.detail_attendance-text::-webkit-calendar-picker-indicator,
+.detail_rest-text::-webkit-calendar-picker-indicator,
+.detail_rest-input-text::-webkit-calendar-picker-indicator {
+    display: none;
+}
+
+.detail_name-text,
+.detail_date-text {
+    margin-left: 60px;
+}
+
+.detail_remarks-text {
+    font-weight: bold;
+    resize: none;
+    margin-left: 60px;
+    border: solid 1px #E1E1E1;
+}
+
+.form_button-message,
+.form_button {
+    width: 900px;
+    margin: 0 auto;
+    text-align: right;
+}
+
+.correction_message {
+    color: #FF000080;
+}
+
+.button {
+    width: 130px;
+    height: 50px;
+    font-size: 22px;
+    font-weight: bold;
+    color: #FFFFFF;
+    background-color: #000000;
+    border-radius: 5px;
+}
+
+.error_message {
+    margin: 15px;
+    font-size: 14px;
+    color: red;
+}
