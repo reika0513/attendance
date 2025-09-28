@@ -98,7 +98,7 @@ input {
 .detail_remarks-text {
     font-weight: bold;
     resize: none;
-    margin-left: 60px;
+    margin-left: 80px;
     border: solid 1px #E1E1E1;
 }
 
@@ -107,10 +107,6 @@ input {
     width: 900px;
     margin: 0 auto;
     text-align: right;
-}
-
-.correction_message {
-    color: #FF000080;
 }
 
 .button {

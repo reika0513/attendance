@@ -159,8 +159,8 @@ class AttendanceController extends Controller
             foreach ($request->rests as $restId => $restData) {
                 $rests[] = [
                 'rest_id'  => $restId,
-                'rest_in'  => $restData['rest_in'] ? Carbon::parse($work_date.' '.$restData['rest_in'] ) : null,
-                'rest_out' => $restData['rest_out'] ? Carbon::parse($work_date.' '.$restData['rest_out']) : null,
+                'rest_in'  => $restData['rest_in'] ? Carbon::parse($work_date.' '.$restData['rest_in'], 'Asia/Tokyo' ) : null,
+                'rest_out' => $restData['rest_out'] ? Carbon::parse($work_date.' '.$restData['rest_out'], 'Asia/Tokyo') : null,
             ];
             }
         }
@@ -168,8 +168,8 @@ class AttendanceController extends Controller
         if (!empty($request->new_rest['rest_in']) || !empty($request->new_rest['rest_out'])) {
             $rests[] = [
                 'rest_id'  => null,
-                'rest_in'  => Carbon::parse($work_date.' '.$request->new_rest['rest_in']),
-                'rest_out' => Carbon::parse($work_date.' '.$request->new_rest['rest_out']),
+                'rest_in'  => Carbon::parse($work_date.' '.$request->new_rest['rest_in'], 'Asia/Tokyo'),
+                'rest_out' => Carbon::parse($work_date.' '.$request->new_rest['rest_out'], 'Asia/Tokyo'),
             ];
         }
 

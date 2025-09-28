@@ -115,4 +115,42 @@ class AdminController extends Controller
         ]);
     }
 
+    public function approveCorrection($id)
+    {
+        $correction = Correction::findOrFail($id);
+        $work = Work::findOrFail($correction->work_id);
+
+        $work->update([
+        'punch_in'  => $correction->punch_in ?? $work->punch_in,
+        'punch_out' => $correction->punch_out ?? $work->punch_out,
+        'remark'    => $correction->remark ?? $work->remark,
+        ]);
+
+        if (!empty($correction->rests)) {
+        foreach ($correction->rests as $restData) {
+            if (!empty($restData['rest_id'])) {
+                $rest = Rest::find($restData['rest_id']);
+                if ($rest) {
+                    $rest->update([
+                        'rest_in'  => $restData['rest_in'] ?? $rest->rest_in,
+                        'rest_out' => $restData['rest_out'] ?? $rest->rest_out,
+                    ]);
+                }
+            }else {
+                if (!empty($restData['rest_in']) || !empty($restData['rest_out'])) {
+                    Rest::create([
+                        'work_id'  => $work->id,
+                        'rest_in'  => $restData['rest_in'],
+                        'rest_out' => $restData['rest_out'],
+                    ]);
+                    }
+                }
+            }
+        }
+
+        $correction->update(['status' => Correction::STATUS_APPROVED]);
+
+        return redirect('/admin/attendance/list')->with('message', '修正申請を承認しました');
+    }
+
 }

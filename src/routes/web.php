@@ -38,4 +38,5 @@ Route::middleware('auth')->group(function () {
     Route::post('/admin/correction/{work_id}', [AdminController::class, 'postCorrection']);
     Route::get('/admin/stamp_correction_request/list', [AdminController::class, 'applicationList']);
     Route::get('/stamp_correction_request/approve/{correction_id}', [AdminController::class, 'getApprovalDetail']);
+    Route::post('/stamp_correction_request/approve/{correction_id}', [AdminController::class, 'approveCorrection']);
 
