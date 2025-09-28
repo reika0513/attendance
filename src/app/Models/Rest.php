@@ -40,8 +40,8 @@ class Rest extends Model
     }
 
     protected $casts = [
-    'rest_in' => 'datetime',
-    'rest_out' => 'datetime'
+        'rest_in' => 'datetime',
+        'rest_out' => 'datetime',
     ];
 
     public function totalRestMinutes($workId){

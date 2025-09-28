@@ -44,9 +44,9 @@
                 <div class="detail_rest-content">
                     @foreach($rests as $index => $rest)
                     <div class="detail_rest-item">
-                    <input name="rests[{{ $rest->id }}][rest_in]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_in)->timezone('Asia/Tokyo')->format('H:i') }}">
+                    <input name="rests[{{ $rest->id }}][rest_in]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_in)->format('H:i') }}">
                     <p class="detail_span">～</p>
-                    <input name="rests[{{ $rest->id }}][rest_out]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_out)->timezone('Asia/Tokyo')->format('H:i') }}">
+                    <input name="rests[{{ $rest->id }}][rest_out]" type="time" class="detail_rest-text" value="{{ optional($rest->rest_out)->format('H:i') }}">
                     </div>
                     @endforeach
                 </div>

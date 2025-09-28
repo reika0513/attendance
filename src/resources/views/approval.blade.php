@@ -40,9 +40,9 @@
                     @foreach($correction->rests ?? [] as $rest)
                     @if(!empty($rest['rest_id']))
                     <div class="detail_rest-item">
-                    <input type="time" class="detail_rest-text" value="{{ $rest['rest_in'] ? \Carbon\Carbon::parse($rest['rest_in'])->timezone('Asia/Tokyo')->format('H:i') : '' }}" readonly>
+                    <input type="time" class="detail_rest-text" value="{{ $rest['rest_in'] ? \Carbon\Carbon::parse($rest['rest_in'])->format('H:i') : '' }}" readonly>
                     <p class="detail_span">～</p>
-                    <input type="time" class="detail_rest-text" value="{{ $rest['rest_out'] ? \Carbon\Carbon::parse($rest['rest_out'])->timezone('Asia/Tokyo')->format('H:i') : '' }}" readonly>
+                    <input type="time" class="detail_rest-text" value="{{ $rest['rest_out'] ? \Carbon\Carbon::parse($rest['rest_out'])->format('H:i') : '' }}" readonly>
                     </div>
                     @endif
                     @endforeach
@@ -55,9 +55,9 @@
                     $newRests = collect($correction->rests ?? [])->filter(fn($r) => empty($r['rest_id']))->values();
                 @endphp
                 @if($newRests->isNotEmpty())
-                    <input type="text" class="detail_rest-input-text" value="{{ $newRests[0]['rest_in'] ? \Carbon\Carbon::parse($newRests[0]['rest_in'])->timezone('Asia/Tokyo')->format('H:i') : '' }}" readonly>
+                    <input type="text" class="detail_rest-input-text" value="{{ $newRests[0]['rest_in'] ? \Carbon\Carbon::parse($newRests[0]['rest_in'])->format('H:i') : '' }}" readonly>
                     <p class="detail_span">～</p>
-                    <input type="text" class="detail_rest-input-text" value="{{ $newRests[0]['rest_out'] ? \Carbon\Carbon::parse($newRests[0]['rest_out'])->timezone('Asia/Tokyo')->format('H:i') : '' }}" readonly>
+                    <input type="text" class="detail_rest-input-text" value="{{ $newRests[0]['rest_out'] ? \Carbon\Carbon::parse($newRests[0]['rest_out'])->format('H:i') : '' }}" readonly>
                 @else
                     <input type="time" class="detail_rest-input-text" value="" readonly>
                     <p class="detail_span">～</p>
