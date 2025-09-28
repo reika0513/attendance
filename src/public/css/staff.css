@@ -1,0 +1,41 @@
+.list {
+    max-width: 1540px;
+    height: 2000px;
+}
+
+.detail_title {
+    margin: 80px 0px 40px 300px;
+    border-left: solid 8px #000000;
+    padding-left: 25px;
+}
+
+.list_staff-table {
+    width: 900px;
+}
+
+.list_staff {
+    width: 900px;
+    margin: 20px auto 20px;
+    background-color: #FFFFFF;
+    border-radius: 10px;
+}
+
+.table_title,
+.table_content {
+    height: 30px;
+    color: #737373;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: solid 3px #E1E1E1;
+}
+
+.table_content-detail,
+.table_title-detail {
+    padding: 10px 70px;
+    text-align: center;
+}
+
+.table_content_detail-link {
+    text-decoration: none;
+    color: #000000;
+}

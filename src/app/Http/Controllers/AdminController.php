@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Work;
 use App\Models\Rest;
+use App\Models\User;
 use App\Models\Correction;
 use Auth;
 use Carbon\Carbon;
@@ -150,7 +151,47 @@ class AdminController extends Controller
 
         $correction->update(['status' => Correction::STATUS_APPROVED]);
 
-        return redirect('/admin/attendance/list')->with('message', '修正申請を承認しました');
+        return redirect('/admin/attendance/list');
+    }
+
+    public function getStaffList(){
+        $users = User::where('role', 'user')->get();
+
+        return view('staff', compact('users'));
+    }
+
+    public function ListEachStaff($user_id){
+        $date = Carbon::today();
+        $dates = $date->format('Y/m');
+
+        $user = User::findOrFail($user_id);
+
+        $works = Work::where('user_id', $user->id)->get();
+
+        $rests = [];
+        foreach ($works as $work) {
+            $rest_minutes = Rest::totalRestMinutes($work->id);
+
+            $hours = floor($rest_minutes / 60);
+            $minutes = $rest_minutes % 60;
+            $rests[$work->id] = sprintf('%02d:%02d', $hours, $minutes);
+        }
+
+        $totals = [];
+        foreach ($works as $work) {
+            $work_minutes = Work::totalWorkMinutes($work->id);
+            $rest_minutes = Rest::totalRestMinutes($work->id);
+
+            $net_minutes = $work_minutes - $rest_minutes;
+
+            $hours = floor($net_minutes / 60);
+            $minutes = $net_minutes % 60;
+            $totals[$work->id] = sprintf('%02d:%02d', $hours, $minutes);
+        }
+
+        $pages = Work::simplePaginate(30);
+
+        return view('list_staff', compact('user', 'dates','works','rests', 'totals', 'pages'));
     }
 
 }

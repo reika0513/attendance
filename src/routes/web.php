@@ -32,14 +32,18 @@ Route::middleware('auth')->group(function () {
 Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
         ->name('admin.login');
 Route::post('/admin/login', [AuthenticatedSessionController::class, 'store']);
-    
+    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
+        ->name('admin.logout');
+
 Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
 
     Route::get('/attendance/list', [AdminController::class, 'list']);
     Route::get('/attendance/{work_id}', [AdminController::class, 'detail']);
     Route::post('/correction/{work_id}', [AdminController::class, 'postCorrection']);
     Route::get('/stamp_correction_request/list', [AdminController::class, 'applicationList']);
-    Route::get('/stamp_correction_request/{correction_id}', [AdminController::class, 'getApprovalDetail']);
+    Route::get('/stamp_correction_request/{correction_id}', [AdminController::class, 'getApprovalDetail'])
+    ->name('admin.correction.detail');
     Route::post('/stamp_correction_request/approve/{correction_id}', [AdminController::class, 'approveCorrection']);
-
+    Route::get('/staff/list', [AdminController::class, 'getStaffList']);
+    Route::get('/attendance/staff/{user_id}', [AdminController::class, 'ListEachStaff']);
 });

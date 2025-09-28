@@ -19,7 +19,10 @@
                 <a class="button_stamp" href="/admin/attendance/list">勤怠一覧</a>
                 <a class="button_list" href="/admin/staff/list">スタッフ一覧</a>
                 <a class="button_application" href="/admin/stamp_correction_request/list">申請一覧</a>
-                    <a class="button_application">ログアウト</a>
+                <form class="logout_form" action="/logout" method="post">
+                @csrf
+                    <button class="button_application">ログアウト</button>
+                </form>
             </div>
         </div>
     </header>

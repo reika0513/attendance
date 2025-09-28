@@ -71,9 +71,15 @@
             </div>
             
         </div>
+        @if($status === 0)
         <div class="form_button">
             <button class="button" type="submit">承認</button>
         </div>
+        @else
+        <div class="form_button-message">
+            <p class="correction_message">承認済み</p>
+        </div>
+        @endif
     </form>
 </div>
 
