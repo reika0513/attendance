@@ -8,7 +8,8 @@ class LogoutResponse implements LogoutResponseContract
 {
     public function toResponse($request)
     {
-        $user = $request->user();
+        $role = session('auth_role');
+        session()->forget('auth_role');
 
         if ($user && $user->role === 'admin') {
             return redirect('/admin/login');

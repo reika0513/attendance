@@ -30,11 +30,6 @@ Route::middleware('auth')->group(function () {
 });
 
 
-Route::prefix('admin')->middleware(['auth', 'admin'])->group(function () {
-    Route::get('/login', [AuthenticatedSessionController::class, 'create'])
+    Route::get('/admin/login', [AuthenticatedSessionController::class, 'create'])
         ->name('admin.login');
-    Route::post('/login', [AuthenticatedSessionController::class, 'store']);
-    Route::post('/logout', [AuthenticatedSessionController::class, 'destroy'])
-        ->name('admin.logout');
-    Route::get('/attendance/list', [AdminController::class, 'index']);
-});
+    Route::get('/admin/attendance/list', [AdminController::class, 'list']);

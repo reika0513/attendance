@@ -1,10 +1,22 @@
-@extends('layouts.app_admin')
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoachTech 勤怠アプリ</title>
+    <link rel="stylesheet" href="{{ asset('css/common.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/sanitize.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/auth/admin_login.css') }}">
+</head>
 
-@section('css')
-<link rel="stylesheet" href="{{ asset('css/auth/admin_login.css') }}">
-@endsection
-
-@section('content')
+<body>
+<header class="header">
+    <div class="header__inner">
+        <a class="header__logo" href="/admin/attendance/list">
+            COACHTECH
+        </a>
+</header>
 <div class="admin_login">
     <div class="login_header">
         <h1 class="login_header-logo">管理者ログイン</h1>
@@ -40,8 +52,8 @@
             </div>
         </div>
         <div class="form_button">
-            <button class="form_button-submit" type="submit">管理者ログインする</button>
+            <a href="/admin/attendance/list" class="form_button-submit">管理者ログインする</a>
         </div>
     </form>
 </div>
-@endsection
+</body>
